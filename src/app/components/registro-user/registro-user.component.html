@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<body class="container">
+    <h6 style="text-align: center"><flash-messages></flash-messages></h6>
+    <br>
+    <form (submit)="onSubmitAddUser()" class="smallwidth">
+      <h3 class="formheader">Crear Usuario</h3>
+        <div class="form-group has-feedback">
+            <input type="text" name="email" id="email" [(ngModel)]="email"
+            class="form-control input-default" placeholder="correo electronico">
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" name="pass" id="pass" [(ngModel)]="pass" 
+            class="form-control input-default" placeholder="Contraseña">
+        </div>
+        <button class="btn btn-info" type="submit" name="action">Guardar
+                <i class="fas fa-save"></i>
+            </button>
+        </form> 
+<table class="table" *ngFor="let trabajador of trabajadores">
+    <thead>
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido Paterno</th>
+        <th scope="col">Apellido Materno</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Fecha Corte</th>
+        <th scope="col">Total Vendido</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>{{trabajador.nombre}}</th>
+        <td>{{trabajador.apellidoPater}}</td>
+        <td>{{trabajador.apellidoMatern}}</td>
+        <td>{{trabajador.usuario}}</td>
+        <td>{{trabajador.fechaCorte}}</td>
+        <td>{{trabajador.totalVendito}}</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>

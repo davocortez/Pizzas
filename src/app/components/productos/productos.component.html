@@ -1,0 +1,52 @@
+<h6 style="text-align: center"><flash-messages></flash-messages></h6>
+<app-add-productos></app-add-productos>
+<ng-container *ngIf="productos?.length > 0; else elseTemplate">
+   <div class="card-deck">
+    <div class="card" *ngFor="let producto of productos">
+      <!-- <Empieza Formulario> -->         
+          <div *ngIf="editState && productoEdit.id == producto.id" class="smallwidth">
+              <form (ngSubmit)="onUpdateProducto(producto)" class="col s9">
+                  <div class="row">
+                    <div class="form-group has-feedback">
+                      <input [(ngModel)]="producto.nombre" #nombre="ngModel" type="text" name="nombre" id="nombre" placeholder="Nombre Producto">
+                    </div>
+                    <div class="form-group has-feedback">
+                      <input [(ngModel)]="producto.descrp" #descrp="ngModel" type="text" name="descrp" id="descrp" placeholder="Descripción">
+                      
+                    </div>
+                    <div class="form-group has-feedback">
+                      <input [(ngModel)]="producto.precio" #precio="ngModel" type="text" name="precio" id="precio" placeholder="Precio">
+                      
+                    </div>
+                    <div class="form-group has-feedback">
+                      <input [(ngModel)]="producto.imagen" #imagen="ngModel" type="text" name="imagen" id="imagen" placeholder="Url Imagen">
+                      
+                    </div>
+                    <button (click)="eliminarProducto($event,producto)" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button>
+                   <br/>
+                   <br/>
+                   <br/>
+                    <button type="submit" class="btn btn-info">Modificar<i class="fas fa-pen mr-1"></i></button> 
+                  </div>
+                </form>
+            </div>
+      <!-- <Termina Formulario>  -->    
+        <i *ngIf="editState == false" (click)="editProducto($event,producto)" class="fas fa-pen"></i>
+        <i *ngIf="editState && productoEdit.id == producto.id" (click)="limpStado()" class="fas fa-times"></i>
+        <img class="card-img-top" src={{producto.imagen}} alt="Card image cap">
+          <div class="card-body">                  
+              <h6 style="text-align: center"><strong>{{producto.nombre}}</strong></h6>
+              <h6 style="text-align: center"><strong>{{producto.precio}}</strong><br></h6>
+              <h6 style="text-align: center"><strong>{{producto.descrp}}</strong><br></h6>
+           </div>        
+  </div>
+</div>
+</ng-container>
+<ng-template #elseTemplate>
+  <hr>
+  <h5>No productos</h5>
+</ng-template>
+
+
+
+  

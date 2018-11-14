@@ -1,0 +1,16 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light" *ngIf="isLogin">
+  <a class="navbar-brand" href="#">
+    <a routerLink="/registro">
+      <button type="button" class="btn btn-info"><i class="fas fa-dollar-sign mr-2"></i>Cortes</button>
+    </a>
+    <a routerLink="/menu-admin">
+      <button type="button" class="btn btn-info"><i class="fab fa-codiepie mr-2"></i>Pizzas</button>
+    </a>
+    <a>
+      <button type="button" (click)="onClickLogautAdmin()" class="btn btn-info"><i class="fas fa-sign-in-alt mr-2"></i>Salir</button>
+    </a>
+  </a>
+</nav>
+
+ 

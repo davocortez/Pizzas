@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<body class="container-fluid" style="padding:15px">  
+    <form (ngSubmit)="onGuardarProducto(formNew)" #formNew="ngForm" class="smallwidth">
+      <h3 class="formheader">Productos</h3>
+        <div class="form-group has-feedback">
+          <input [(ngModel)]="productoNew.nombre" #nombre="ngModel" type="text" class="form-control input-default"
+          name="nombre" id="nombre" placeholder="Nombre Producto">
+         <i class="glyphicon glyphicon-user form-control-feedback"></i>
+        </div>
+        <div class="form-group has-feedback">
+          <input [(ngModel)]="productoNew.descrp" #descrp="ngModel" type="text" class="form-control input-default"
+          name="descrp" id="descrp" placeholder="Descripción">
+        </div>
+        <div class="form-group has-feedback">
+          <input [(ngModel)]="productoNew.precio" #precio="ngModel" type="text" class="form-control input-default"
+          name="precio" id="precio" placeholder="Precio">
+        </div>
+        <div class="form-group has-feedback">
+          <input [(ngModel)]="productoNew.imagen" #imagen="ngModel" type="text" class="form-control input-default"
+          name="imagen" id="imagen" placeholder="Url Imagen">
+        </div>
+        <button class="btn btn-info" type="submit" name="action">Guardar 
+         <i class="fas fa-save"></i></button>
+    </form>
+</body>

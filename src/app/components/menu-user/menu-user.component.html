@@ -1,0 +1,56 @@
+<app-nav-bar-user></app-nav-bar-user> 
+<h6 style="text-align: center"><flash-messages></flash-messages></h6>
+<ng-container *ngIf="productos?.length > 0; else elseTemplate">
+    <div class="card-deck">
+        <div class="card mt-3" style="width: 5rem;" *ngFor="let producto of productos">
+            <img class="card-img-top" src={{producto.imagen}} alt="Card image cap">
+            <div class="card-body">                  
+                <h6 style="text-align: center"><strong>{{producto.nombre}}</strong></h6>
+                <h6 style="text-align: center"><strong>{{producto.precio}}</strong><br>
+                <button (click)="verModal(producto,pizzas)" type="button" class="btn btn-danger btn-lg btn-block">
+                 Comprar</button></h6>
+            </div>
+        </div> 
+    </div>
+    <div class="card" style="width: 20rem; margin-left: 75%;margin-top: -30%;">
+        <div class="card-body" *ngFor="let carr of carrito">
+                <h6 style="text-align: center"><strong>{{carr.nombre}}</strong></h6>
+                <h6 style="text-align: center"><strong>{{carr.tamnoP}}</strong></h6>
+                <h6 style="text-align: center"><strong>{{carr.precio}}</strong></h6> 
+        </div>
+      </div> 
+</ng-container>
+<ng-template #elseTemplate>
+    <hr>
+    <h5>No productos</h5>
+</ng-template>
+
+<ng-template #pizzas let-c="close" let-d="dismiss">
+    |<div class="modal-header" style="width: 15rem; height: 15rem; margin-left: 7rem;">
+            <img class="card-img-top" src={{produ.imagen}} alt="Card image cap">
+    </div>
+    <div class="modal-body">
+                <h6 style="text-align: center"><strong>{{produ.nombre}}</strong></h6>
+                <h6 style="text-align: center"><strong>{{produ.precio}}</strong><br></h6>
+                <p style="text-align: center">{{produ.descrp}}</p>
+    </div>
+    <form (ngSubmit)="onGuardarProductoCar(formNew)" #formNew="ngForm">
+            <input type="hidden" [(ngModel)]="productoIn.precio" #precio="ngModel" 
+            name="precio" id="precio">        
+            <button type="submit" name="action" class="btn btn-danger ml-2">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>Chica</button>
+
+            <button type="submit" name="action" class="btn btn-danger ml-4">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Mediana</button>
+
+            <button type="submit" name="action" class="btn btn-danger ml-4">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Grande</button>
+    </form>
+    <button type="button" class="btn btn-info"  (click)="d('Cross click')">
+     <i class="fa fa-share mr-5" aria-hidden="true"></i>Cancelar</button>
+</ng-template>
+
+
+
+<!-- Card Regular -->
+<!-- Card Regular -->
